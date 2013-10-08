@@ -1,0 +1,94 @@
+
+.locations {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 40;
+	.top-nav-wrap {
+		border-top: 2px solid black;
+		background: url(#{$imgPath}/texture-transparent.png);
+		overflow: hidden;
+		@include box-shadow(0 0 6px rgba(black,.5));
+	}
+	.column {
+		width: (100%/3);
+		float: left;
+		text-align: center;
+		@include box-sizing(border-box);
+		//background: #f8d4be;
+		&:first-child a {
+			margin-left: 0;
+		}
+		a {
+			display: block;
+			padding: 20px 0;
+			font-size: 1.3em;
+			@include superlink;
+			margin-left: 2px;
+			&:after {
+				content: '\25BC';
+				display: block;
+				margin: 0 auto;
+				width: 10px;
+				@include transform(scale(1.3, 1));
+			}
+			&.active {
+				background: black;
+			}
+		}
+	}
+	&.faders {
+		a {
+			&:after {
+				display: none;
+				content: '';
+			}
+		}
+	}
+	&.blowup {
+		.title {
+			background: black;
+		}
+	}
+	.title {
+		//background: black;
+		color: white;
+		text-align: center;
+		margin: 0 auto;
+		padding: 7px 20px 5px 19px;
+		display: block;
+		font-size: 1.1em;
+		@include text-shadow(0 1px 5px black);
+		strong {
+			text-transform: uppercase;
+			background: white;
+			color: black;
+			@include inline-block;
+			padding: 4px 6px 2px;
+			font-size: 1.6em;
+			font-weight: bold;
+			@include text-shadow(none);
+		}	
+		&:before {
+			width: 24px;
+			height: 36px;
+			font-size: 2.2em;
+			position: absolute;
+			display: block;
+			bottom: -35%;
+			z-index: 0;
+			left: 43%;
+			@include text-shadow(0 2px 2px black);
+		}
+	}
+	&.fresh {
+		#close-faders {
+			display: none;
+		}
+	}
+	&.faders {
+		.title {
+			display: none;
+		}
+	}
+}

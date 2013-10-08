@@ -1,0 +1,10 @@
+.theme-options-form { margin-top: 20px; }
+
+.option-panel { overflow: hidden; } 
+.option-panel .mceEditor {
+     width: 100% !important;
+}
+
+.mceIframeContainer {
+	background: white;
+}

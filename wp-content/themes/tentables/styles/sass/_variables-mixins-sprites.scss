@@ -1,0 +1,88 @@
+
+//
+//variables
+//
+$imgPath: /wp-content/themes/tentables/images;
+
+
+$script: 'Amatic SC',sans-serif;
+$sans-serif: 'Source Code Pro', sans-serif;
+
+$color-pink: #ff7c00;
+$color-orange: #610009;
+$color-limegreen: #92ff80;
+$color-error: #ff9093;
+
+//
+//mixins
+//
+@mixin superlink {
+	font-family: $sans-serif;
+	background: $color-orange url(#{$imgPath}/texture-transparent.png);
+	text-transform: uppercase;
+	color: white;
+	@include text-shadow(1px 1px 2px #8d440b);
+	@include transition(background-color,color 1s);
+	&:hover {
+		background: white url(#{$imgPath}/texture-transparent.png);
+	}
+	&.active {
+		@include transition(0);
+	}
+}
+
+@mixin superlink-alt {
+	font-family: $sans-serif;
+	background: $color-pink url(#{$imgPath}/texture-transparent-orange.png);
+	text-transform: uppercase;
+	color: white;
+	@include text-shadow(1px 1px 2px #8d440b);
+	@include transition(background-color,color 1s);
+	&:hover {
+		background: white url(#{$imgPath}/texture-transparent-orange.png);
+	}
+	&.active {
+		@include transition(0);
+	}
+}
+
+@mixin button {
+	@include superlink;
+	border: 0;
+	padding: 10px 5px;
+	@include box-shadow(2px 2px 3px rgba(0,0,0,.3));
+	cursor: pointer;
+	position: relative;
+	font-size: 1.3em;
+}
+
+@mixin input-text {
+	@include box-sizing(border-box);
+	background: #f9f1e4;
+	border: 0;
+	padding: 4px 3px;
+	@include box-shadow(inset 2px 2px 3px rgba(0,0,0,.3));
+}
+@mixin normal-link {
+	background: $color_pink;
+	color: white;
+	@include transition(background-color,color,border .8s);
+	&:hover {
+		border-bottom: 2px dashed white;
+		@include opacity(.8);
+	}
+}
+
+@mixin blacken {
+	background: black;
+	background: rgba(0,0,0,.8);
+}
+
+//
+//sprite settings
+//
+
+//normal sprite
+$spriteNormal-spacing: 2px;
+$spriteNormal-layout: smart;
+@import "spriteNormal/*.png";

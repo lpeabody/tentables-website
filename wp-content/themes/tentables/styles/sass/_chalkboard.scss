@@ -1,0 +1,358 @@
+
+.chalkboard {
+	background: url(#{$imgPath}/chalkboard.jpg);
+	width: 100%;
+	z-index: 30;
+	position: relative;
+	@include text-shadow(2px 2px 3px black);
+	&.bg {
+		background: url(#{$imgPath}/chalkboard.jpg) !important;
+	}
+	.chalkboard-content {
+		position: relative;
+		color: white;
+		padding-bottom: 20px;
+		.page-width {
+			padding: 20px;
+			position: relative;
+			@include box-sizing(border-box);
+		}
+		p {
+			font-size: .9em;
+			//@include background(rgba(#f96309,.5));
+			background: white;
+			color: black;
+			padding: 8px 7px;
+			@include inline-block;
+			@include text-shadow(none);
+		}
+		h2,h3,h4 {
+			font-family: $script;
+		}
+		h2 {
+			font-size: 4em;
+			margin: 20px 0;
+		}
+
+		p.success {
+			background: $color_limegreen;
+		}
+		input,
+		p {
+			&.error {
+				background: $color_error !important;
+			}
+
+		}
+		label.error,
+		.error li {
+			font-size: .8em;
+			color: $color_error;
+
+		}
+	}
+	&.top {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 50;
+		&.flex {
+			.logo-mini {
+				@include inline-block;
+			}
+		}
+		.logo-mini {
+			display: none;
+			background: black;
+			padding: 5px 10px;
+			font-weight: 800;
+			color: white;
+			font-family: $sans-serif;
+			float: left;
+			text-transform: uppercase;
+			&:before {
+				content: '';
+				@include spriteNormal-sprite(pot-tiny);
+				width: 32px;
+				height: 14px;
+				@include inline-block;
+				margin-right: 10px;
+				margin-top: -5px;
+			}
+			&:hover {
+				@include opacity(.7);
+			}
+		}
+		.chalkboard-content,
+		section {
+			display: none;
+		}
+		section {
+			&.active {
+				display: block;
+			}
+		}
+		nav {
+			text-align: right;
+			font-family: $script;
+			font-weight: 900;
+			li {
+				@include inline-block;
+			}
+			.active,
+			.current_page_item a {
+				@include blacken;
+			}
+			a {
+				@include transition(background-color 1s linear, color 1s linear);
+			}
+			&.about-nav {
+				text-align: left;
+				margin-bottom: 20px;
+				margin-top: -5px;
+				a {
+					@include superlink-alt;
+					margin-right: 10px;
+					font-size: .9em;
+					padding: 3px 8px;
+					font-weight: normal;
+					&.active {
+						background: black;
+					}
+				}
+			}
+		}
+		.fb,
+		.tw {
+			@include inline-block;
+			width: 23px;
+			height: 25px;
+		}
+		.fb {
+			@include spriteNormal-sprite(icon_facebook);
+			margin-left: 20px;
+		}
+		.tw {
+			@include spriteNormal-sprite(icon_twitter);
+			margin-left: 0;
+		}
+		.page-width {
+			> li > a {
+				font-size: 1.6em;
+				color: white;
+				@include inline-block;
+				margin-left: 20px;
+				padding: 5px 10px;
+				&:hover {
+					background: black;
+					position: relative;
+					&:after {
+						position: absolute;
+						width: 100%;
+						bottom: 0;
+						content: '';
+						left: 0;
+						border-bottom: 2px dashed white;
+					}
+				}
+			}
+			li:first-child a {
+				margin-left: 0;
+			}
+			.close-chalkboard {
+				position: absolute;
+				padding: 0px 7px 5px;
+				font-size: 1.4em;
+				background: $color-orange;
+				color: white;
+				right: 10px;
+				top: 10px;
+			}
+		}
+		.chalkboard-content {
+			.page-width {
+				@include blacken;
+			}
+			#reservations--private-events {
+				form {
+					.row {
+						margin: 10px 0;
+					}
+					dt,
+					label {
+						display: block;
+						margin-top: 10px;
+						margin-bottom: 4px;
+					}
+					.imgCal {
+						width: 1px;
+						height: 1px;
+						position: absolute;
+						z-index: 1;
+						left: 20px;
+						#imageCal {
+							@include text-shadow(none);
+							background: white;
+							border-top: 2px solid #666;
+							border-bottom: 2px solid #666;
+							border-right: 1px solid #666;
+							border-left: 1px solid #666;
+							> tbody > tr:first-child,
+							> tbody > tr:first-child + tr + tr {
+								display: none;
+							}
+							table > tbody > tr:first-child {
+								display: none;
+								+ tr > td:first-child + td {
+									> a:first-child {
+										position: absolute;
+										top: 2px;
+										left: 184px;
+									}
+								}
+							}
+							.monthRow > tbody > tr:first-child {
+								display: block;
+								> td {
+									background: white;
+									&:first-child + td {
+										color: black;
+										font-size: 1.2em;
+										width: 176px;
+										text-align: center;
+										text-transform: uppercase;
+									}
+								}
+							}
+							.weekdays {
+								background: black;
+								color: white;
+							}
+							.weekdays,
+							.nonclickableDays,
+							.clickableDays {
+								padding: 2px;
+							}
+							.nonclickableDays {
+								color: black;
+							}
+							.clickableDays {
+								a {
+									@include normal-link;
+								}
+							}
+						}
+					}
+					textarea,
+					input[type=text],
+					select {
+						@include input-text;
+						width: 60%;
+
+					}
+					input[type=submit],
+					input[type=image] {
+						@include button;
+						width: 60%;
+						&.OT_TableButton {
+							//width: 0;
+						}
+					}
+				}
+			}
+			.column {
+				@include inline-block;
+				width: (100%/2);
+				float: left;
+			}
+		}
+	}
+	.switch-content {
+		.tab {
+			display: none;
+		}
+	}
+	.tab {
+		.wrap {
+			padding: 20px 25px;
+			background: white;
+			&.small {
+				@include inline-block;
+				width: 75%;
+			}
+			h5 {
+				color: black;
+				@include text-shadow(none);
+				font-size: 1.5em;
+				margin: 16px 0 8px;
+			}
+			h6 {
+				color: black;
+				@include text-shadow(none);
+				font-size: 1em;
+			}
+			p {
+				font-size: .8em;
+				padding-left: 0;
+				padding-right: 0;
+				line-height: 1.4em;
+				display: block;
+				font-family: arial,sans-serif;
+				a {
+					@include normal-link;
+				}
+			}
+			small {
+				font-size: .75em;
+			}
+		}
+		&.active {
+			display: block;
+		}
+	}
+}
+#gift-cards {
+	h5 {
+		text-align: center;
+	}
+}
+
+
+.page-template-templatesnews-events-php {
+	.chalkboard {
+		&.top {
+			background: none;
+		}
+	}
+}
+
+//.locations,
+.chalkboard.top {
+	&.flex {
+		position: fixed;
+	}
+}
+
+#gift-cards {
+	.center {
+		width: 293px;
+		margin: 10px auto;
+		background: white;
+		height: 34px;
+		overflow: hidden;
+	}
+	#BB_BuyButtonForm {
+		p {
+			display: none;
+		}
+		td {
+			vertical-align: top;
+			&:first-child {
+				padding-top: 6px;
+			}
+		}
+	}
+}
+.page-template-templatesnews-events-php #menu-item-173 {
+	display: none;
+}

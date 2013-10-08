@@ -1,0 +1,6 @@
+.login h1 a {
+	background: url(../images/spriteNormal/logo.png) no-repeat center center;
+	width: 106px;
+	margin: 0 auto;
+	height: 123px;
+}
